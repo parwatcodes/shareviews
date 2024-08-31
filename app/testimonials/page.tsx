@@ -13,7 +13,10 @@ const fetchTestimonials = async () => {
 };
 
 const TestimonialPage = () => {
-  const { data: testimonials, isError, isLoading } = useQuery[['testimonials'], fetchTestimonials];
+  const { data: testimonials, isError, isLoading } = useQuery({
+    queryKey: ['testimonials'],
+    queryFn: fetchTestimonials
+  });
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading testimonials...</div>;
